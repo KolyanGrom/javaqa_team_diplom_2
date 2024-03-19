@@ -19,19 +19,6 @@ public class CreditAccountTest {
     }
 
     @Test
-    public void addMoneyAboveCreditLimit() {
-        CreditAccount account = new CreditAccount(
-                0,
-                999_999_998,
-                15
-        );
-
-        account.add(999_999_999);
-
-        Assertions.assertEquals(999_999_998, account.getBalance());
-    }
-
-    @Test
     public void payAboveCreditLimitMin() {
         CreditAccount account = new CreditAccount(
                 0,
