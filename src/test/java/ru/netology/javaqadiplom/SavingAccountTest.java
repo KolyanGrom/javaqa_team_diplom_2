@@ -100,9 +100,29 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void shouldShowException() {
-        SavingAccount account = new SavingAccount(2_000, 1_000, 10_000, -4);
+    public void shouldShowExceptionRate() {
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> account.yearChange());
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SavingAccount(2_000, 1_000, 10_000, -4));
+    }
+
+    @Test
+    public void shouldShowExceptionInitialBalance() {
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SavingAccount(500, 1_000, 10_000, 5));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SavingAccount(11_000, 1_000, 10_000, 5));
+    }
+
+    @Test
+    public void shouldShowExceptionMinBalance() {
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SavingAccount(2_000, -1_000, 10_000, 5));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SavingAccount(2_000, 11_000, 10_000, 5));
+    }
+
+    @Test
+    public void shouldShowExceptionMaxBalance() {
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SavingAccount(2_000, 1_000, -10_000, 5));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SavingAccount(2_000, 1_000, 500, 5));
     }
 }
