@@ -17,7 +17,30 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(13_000, account.getBalance());
     }
+    @Test
+    public void shouldAddMinusToBalance() {
+        CreditAccount account = new CreditAccount(
+                10_000,
+                15_000,
+                15
+        );
 
+        account.add(-10);
+
+        Assertions.assertEquals(10_000, account.getBalance());
+    }
+    @Test
+    public void shouldAddZeroToBalance() {
+        CreditAccount account = new CreditAccount(
+                10_000,
+                15_000,
+                15
+        );
+
+        account.add(0);
+
+        Assertions.assertEquals(10_000, account.getBalance());
+    }
     @Test
     public void payAboveCreditLimitMin() {
         CreditAccount account = new CreditAccount(
@@ -54,7 +77,30 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(15_000, account.getBalance());
     }
+    @Test
+    public void payZeroBalanceTest() {
+        CreditAccount account = new CreditAccount(
+                20_000,
+                100_000,
+                15
+        );
 
+        account.pay(0);
+
+        Assertions.assertEquals(20_000, account.getBalance());
+    }
+    @Test
+    public void payMinusBalanceTest() {
+        CreditAccount account = new CreditAccount(
+                20_000,
+                100_000,
+                15
+        );
+
+        account.pay(-1_000);
+
+        Assertions.assertEquals(20_000, account.getBalance());
+    }
     @Test
     public void accountTest() {
 
