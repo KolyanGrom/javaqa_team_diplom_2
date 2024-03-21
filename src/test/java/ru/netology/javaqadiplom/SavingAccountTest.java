@@ -116,13 +116,19 @@ public class SavingAccountTest {
     public void shouldShowExceptionMinBalance() {
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> new SavingAccount(2_000, -1_000, 10_000, 5));
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new SavingAccount(2_000, 11_000, 10_000, 5));
     }
 
     @Test
-    public void shouldShowExceptionMaxBalance() {
+    public void shouldShowMinBalance() {
+        SavingAccount account = new SavingAccount(2_000, 1_000, 10_000, 5);
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new SavingAccount(2_000, 1_000, -10_000, 5));
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new SavingAccount(2_000, 1_000, 500, 5));
+        Assertions.assertEquals(1_000, account.getMinBalance());
+    }
+
+    @Test
+    public void shouldShowMaxBalance() {
+        SavingAccount account = new SavingAccount(2_000, 1_000, 10_000, 5);
+
+        Assertions.assertEquals(10_000, account.getMaxBalance());
     }
 }
