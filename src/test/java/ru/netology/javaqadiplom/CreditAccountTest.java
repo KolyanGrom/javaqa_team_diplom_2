@@ -69,6 +69,18 @@ public class CreditAccountTest {
     }
 
     @Test
+    public void yearTestRateMinusBalanse() {
+        CreditAccount account = new CreditAccount(
+                200,
+                100_0000,
+                15
+        );
+        account.pay(400);
+
+        Assertions.assertEquals(-30, account.yearChange());
+    }
+
+    @Test
     public void payAndBalanceTest() {
         CreditAccount account = new CreditAccount(
                 20_000,
@@ -79,6 +91,19 @@ public class CreditAccountTest {
         account.pay(5_000);
 
         Assertions.assertEquals(15_000, account.getBalance());
+    }
+
+    @Test
+    public void payLimitTest() {
+        CreditAccount account = new CreditAccount(
+                0,
+                15_000,
+                15
+        );
+
+        account.pay(15_000);
+
+        Assertions.assertEquals(-15_000, account.getBalance());
     }
 
     @Test
