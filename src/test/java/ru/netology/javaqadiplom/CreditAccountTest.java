@@ -147,4 +147,12 @@ public class CreditAccountTest {
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> new CreditAccount(-15, 15, 10));
     }
+
+    @Test
+    public void accountTest_2() {
+
+
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> new CreditAccount(15, 15, -10));
+    }
 }
